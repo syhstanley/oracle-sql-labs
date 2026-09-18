@@ -45,7 +45,7 @@ customers ──< orders >── employees
 | salary | NUMBER(10,2) | |
 | commission_pct | NUMBER(4,2) | only set for Sales reps; NULL otherwise — good for NULL-handling exercises |
 | department_id | NUMBER(4) FK → departments | |
-| manager_id | NUMBER(6) FK → employees | NULL only for the CEO (row 100) — the root of the hierarchy used in Lab 09 (`CONNECT BY`) |
+| manager_id | NUMBER(6) FK → employees | NULL only for the CEO (row 100) — the root of the hierarchy used in Lab 11 (`CONNECT BY`) |
 
 ### `customers`
 | Column | Type | Notes |
@@ -67,7 +67,7 @@ customers ──< orders >── employees
 | Column | Type | Notes |
 |---|---|---|
 | order_id | NUMBER(8) PK | 1..10000 |
-| customer_id | NUMBER(6) FK → customers | **no index** initially (see Module 5) |
+| customer_id | NUMBER(6) FK → customers | **no index** initially (see Module 6) |
 | employee_id | NUMBER(6) FK → employees | nullable; **no index** initially |
 | order_date | DATE | spread across ~3 years; **no index** initially |
 | status | VARCHAR2(20) | PENDING / SHIPPED / CANCELLED / COMPLETED |
@@ -81,8 +81,8 @@ customers ──< orders >── employees
 | quantity | NUMBER(5) | |
 | unit_price | NUMBER(10,2) | copied at order time (denormalized on purpose — prices in `products` can drift) |
 
-**Why no secondary indexes yet?** Modules 1–4 deliberately run against a
-schema with only primary-key indexes, so when you hit Module 5 (execution
+**Why no secondary indexes yet?** Modules 1–5 deliberately run against a
+schema with only primary-key indexes, so when you hit Module 6 (execution
 plans / index access paths) you'll *see* a full table scan on 10,000+ rows,
 add an index yourself, and watch the plan flip to a range scan — not just
 read about it.
