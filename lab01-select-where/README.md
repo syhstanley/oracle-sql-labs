@@ -139,4 +139,4 @@ NULL` are the only operators that test nullness correctly.
 ---
 
 ⬅️ Previous: none — start at [Lab 00 — Setup](../lab00-setup/)
-➡️ Next: [Lab 02 — DUAL & Pseudo-columns](../lab02-dual-pseudocolumns/)
+➡️ Next: [Lab 02 — INSERT / UPDATE / DELETE / CASE / NULLIF](../lab02-dml-basics/)

@@ -3,8 +3,8 @@
 A hands-on course for going from "I can write `SELECT * FROM table`" to
 professionally competent Oracle SQL — including the parts most SQL courses
 skip: `LISTAGG`/`XMLAGG`, analytic (window) functions, `ROWNUM` vs
-`ROW_NUMBER`, execution plans, index access paths, and optimizer hints like
-`LEADING`.
+`ROW_NUMBER`, execution plans, index access paths, optimizer hints like
+`LEADING`, views, and PL/SQL procedures/functions/packages/triggers.
 
 No local Oracle install required — see **Setup** below.
 
@@ -61,42 +61,51 @@ practice before you have that access.
 | Lab | Topic |
 |---|---|
 | [Lab 01](lab01-select-where/) | `SELECT` / `WHERE` / operators / `NULL` / `ORDER BY` |
-| [Lab 02](lab02-dual-pseudocolumns/) | `DUAL`, pseudo-columns, `SYSDATE`, sequences, `TO_CHAR`/`TO_DATE` |
+| [Lab 02](lab02-dml-basics/) | `INSERT` / `UPDATE` / `DELETE`, `CASE`, `NULLIF` |
+| [Lab 03](lab03-ddl-constraints/) | `CREATE TABLE`, `ALTER TABLE`, `PRIMARY KEY`/`FOREIGN KEY`/`UNIQUE`/`CHECK` |
+| [Lab 04](lab04-dual-pseudocolumns/) | `DUAL`, pseudo-columns, `SYSDATE`, sequences, `TO_CHAR`/`TO_DATE` |
 
 **Module 2 — Aggregation & Strings**
 | Lab | Topic |
 |---|---|
-| [Lab 03](lab03-group-by-aggregates/) | `GROUP BY` / `HAVING` / `MAX`/`MIN`/`SUM`/`AVG`/`COUNT` |
-| [Lab 04](lab04-listagg-xmlagg/) | `LISTAGG`, `XMLAGG`, `REGEXP_*` |
+| [Lab 05](lab05-group-by-aggregates/) | `GROUP BY` / `HAVING` / `MAX`/`MIN`/`SUM`/`AVG`/`COUNT` |
+| [Lab 06](lab06-listagg-xmlagg/) | `LISTAGG`, `XMLAGG`, `REGEXP_*` |
 
 **Module 3 — Window & Ranking**
 | Lab | Topic |
 |---|---|
-| [Lab 05](lab05-analytic-window/) | Analytic functions: `OVER`, `PARTITION BY`, frame clauses |
-| [Lab 06](lab06-ranking-rownum/) | `RANK`, `DENSE_RANK`, `ROW_NUMBER`, `ROWNUM` vs `ROW_NUMBER`, top-N |
+| [Lab 07](lab07-analytic-window/) | Analytic functions: `OVER`, `PARTITION BY`, frame clauses |
+| [Lab 08](lab08-ranking-rownum/) | `RANK`, `DENSE_RANK`, `ROW_NUMBER`, `ROWNUM` vs `ROW_NUMBER`, top-N |
 
 **Module 4 — Joins & Set Logic**
 | Lab | Topic |
 |---|---|
-| [Lab 07](lab07-joins/) | Inner/outer/self/cross joins, ANSI vs Oracle `(+)` syntax |
-| [Lab 08](lab08-subqueries-ctes-set-ops/) | Subqueries, `WITH` (CTEs), `UNION`/`INTERSECT`/`MINUS` |
-| [Lab 09](lab09-hierarchical-connect-by/) | `CONNECT BY PRIOR`, `START WITH`, `LEVEL` |
+| [Lab 09](lab09-joins/) | Inner/outer/self/cross joins, ANSI vs Oracle `(+)` syntax |
+| [Lab 10](lab10-subqueries-ctes-set-ops/) | Subqueries, `WITH` (CTEs), `UNION`/`INTERSECT`/`MINUS` |
+| [Lab 11](lab11-hierarchical-connect-by/) | `CONNECT BY PRIOR`, `START WITH`, `LEVEL` |
 
-**Module 5 — Performance & Indexing**
+**Module 5 — Views**
 | Lab | Topic |
 |---|---|
-| [Lab 10](lab10-explain-plan/) | `EXPLAIN PLAN`, `DBMS_XPLAN.DISPLAY`, reading a plan |
-| [Lab 11](lab11-index-access-paths/) | Full scan vs index range/unique/skip scan |
-| [Lab 12](lab12-hints-leading/) | Hints: `LEADING`, `USE_NL`/`USE_HASH`, `INDEX`, `FULL` |
-| [Lab 13](lab13-bind-variables/) | Bind variables, hard parses, cursor sharing |
+| [Lab 12](lab12-views/) | `CREATE VIEW`, updatable views, `WITH CHECK OPTION`, materialized views |
 
-**Module 6 — Advanced**
+**Module 6 — Performance & Indexing**
 | Lab | Topic |
 |---|---|
-| [Lab 14](lab14-merge-transactions/) | `MERGE` (upsert), transactions, locking basics |
-| [Lab 15](lab15-pivot-json/) | `PIVOT`/`UNPIVOT`, `JSON_TABLE`, JSON functions |
-| [Lab 16](lab16-plsql-basics/) | PL/SQL: anonymous blocks, cursors, `BULK COLLECT`/`FORALL` |
-| [Lab 17](lab17-capstone-tuning/) | **Capstone** — diagnose and fix a slow real-world query |
+| [Lab 13](lab13-explain-plan/) | `EXPLAIN PLAN`, `DBMS_XPLAN.DISPLAY`, reading a plan |
+| [Lab 14](lab14-index-access-paths/) | Full scan vs index range/unique/skip scan |
+| [Lab 15](lab15-hints-leading/) | Hints: `LEADING`, `USE_NL`/`USE_HASH`, `INDEX`, `FULL` |
+| [Lab 16](lab16-bind-variables/) | Bind variables, hard parses, cursor sharing |
+
+**Module 7 — Advanced**
+| Lab | Topic |
+|---|---|
+| [Lab 17](lab17-merge-transactions/) | `MERGE` (upsert), transactions, row locking & deadlocks |
+| [Lab 18](lab18-pivot-json/) | `PIVOT`/`UNPIVOT`, `JSON_TABLE`, JSON functions |
+| [Lab 19](lab19-plsql-basics/) | PL/SQL: anonymous blocks, cursors, `BULK COLLECT`/`FORALL` |
+| [Lab 20](lab20-stored-procs-functions-packages/) | Procedures, functions, packages |
+| [Lab 21](lab21-triggers/) | Triggers: row-level vs statement-level, mutating-table errors |
+| [Lab 22](lab22-capstone-tuning/) | **Capstone** — diagnose and fix a slow real-world query |
 
 ## Shared schema
 
