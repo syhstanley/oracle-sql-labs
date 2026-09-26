@@ -36,7 +36,7 @@ ORDER BY group_expr1;
 ## Scenario
 
 Sales leadership wants a monthly revenue report per department, but only
-for departments that shipped at least $50,000 in a given month — small or
+for departments that shipped at least $150,000 in a given month — small or
 inactive departments should be dropped from the report entirely, not shown
 with tiny numbers.
 
@@ -50,12 +50,12 @@ JOIN   departments d ON d.department_id = e.department_id
 JOIN   order_items oi ON oi.order_id    = o.order_id
 WHERE  o.status <> 'CANCELLED'
 GROUP BY d.department_name, TO_CHAR(o.order_date, 'YYYY-MM')
-HAVING SUM(oi.quantity * oi.unit_price) >= 50000
+HAVING SUM(oi.quantity * oi.unit_price) >= 150000
 ORDER BY order_month, d.department_name;
 ```
 
 Notice `status <> 'CANCELLED'` is in `WHERE` (a per-row fact, known before
-grouping), while the $50,000 threshold is in `HAVING` (a per-group fact,
+grouping), while the $150,000 threshold is in `HAVING` (a per-group fact,
 only known after summing).
 
 ## Common Pitfalls

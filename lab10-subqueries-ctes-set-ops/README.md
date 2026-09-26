@@ -241,7 +241,7 @@ JOIN   order_totals ot ON ot.order_id = o.order_id;
 
 The original nests **three levels of correlated subqueries**, each
 re-scanning and re-aggregating `order_items` for every single row of the
-outer query — roughly O(n²) aggregation work over a 25,000-row table. The
+outer query — roughly O(n²) aggregation work over a ~30,000-row table. The
 fix computes each order's total value and distinct-product count **once**
 each (via the CTEs), so the remaining comparison works against small,
 already-aggregated result sets instead of recomputing `SUM`/`COUNT

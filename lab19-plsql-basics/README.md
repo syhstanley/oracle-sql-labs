@@ -131,7 +131,7 @@ END;
 round-trip between the PL/SQL engine and the SQL engine (yes — even
 within the same database session, that context switch has a real cost).
 `FORALL` sends the whole batch as one round-trip. On a handful of rows you
-won't notice; on the ~25,000-row `order_items` load in
+won't notice; on the ~30,000-row `order_items` load in
 `schema/02_seed_data.sql`, row-by-row would be dramatically slower.
 
 **2. `WHEN OTHERS THEN NULL` — silently swallowing every error**

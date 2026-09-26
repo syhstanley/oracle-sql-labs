@@ -74,7 +74,9 @@ ORA-01489: result of string concatenation is too long
 This query works fine in testing with small data, then breaks in
 production the moment one customer's aggregated product list crosses the
 VARCHAR2 limit — a classic "worked on my machine" bug because dev/test
-data rarely has a customer with hundreds of orders. Guard against it:
+data rarely has a customer with hundreds of orders. The shared schema
+*does* have one: customer 7 is a key account with ~700 orders, so this
+query really fails here. Guard against it:
 
 ```sql
 -- RIGHT
@@ -192,7 +194,7 @@ SELECT category,
 FROM   products
 GROUP BY category;
 ```
-With only 100 products across 5 categories this won't actually overflow,
+With only 104 products across 6 categories this won't actually overflow,
 but adding the safety clause is a habit worth having any time the group
 size isn't tightly bounded.
 
@@ -204,7 +206,10 @@ WHERE  NOT REGEXP_LIKE(email, '^[^@]+@[^@]+\.[^@]+$');
 ```
 `^[^@]+@[^@]+\.[^@]+$` anchors the whole string (`^`...`$`) so partial
 matches don't count, and requires at least one char before `@`, one
-between `@` and the dot, and one after.
+between `@` and the dot, and one after. Expect 5 rows. The 10 customers
+whose `email` is `NULL` don't show up: `REGEXP_LIKE(NULL, ...)` is
+`UNKNOWN`, and so is `NOT UNKNOWN` — add `OR email IS NULL` if you want
+them too.
 
 ```sql
 -- 5

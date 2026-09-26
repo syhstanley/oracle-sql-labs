@@ -27,19 +27,22 @@ uses — DDL, DML, indexes, hints, `EXPLAIN PLAN`, PL/SQL — works fine there.
    `/` and `;`, so the single-statement Run button won't work here).
 4. Clear the worksheet, paste in
    [`../schema/02_seed_data.sql`](../schema/02_seed_data.sql), and **Run
-   Script** again. The PL/SQL block at the end takes a few seconds — it's
-   inserting ~25,000 rows of order line items.
+   Script** again. The PL/SQL blocks near the end take a few seconds —
+   they generate 10,000 orders and ~30,000 order line items.
 5. You should see a final result set listing row counts per table. Confirm
    it matches:
 
    | TBL | ROWS_ |
    |---|---|
-   | departments | 8 |
-   | employees | 48 |
+   | departments | 9 |
+   | employees | 52 |
    | customers | 500 |
-   | products | 100 |
+   | products | 104 |
    | orders | 10000 |
-   | order_items | ~25000 (varies — it's randomized) |
+   | order_items | 29710 |
+
+   The seed data is deterministic (no `DBMS_RANDOM`), so these numbers —
+   and every query result in the labs — are exactly the same for everyone.
 
 If any step errors, re-run `01_create_tables.sql` first (it drops and
 recreates all six tables) and try again.
@@ -65,7 +68,9 @@ GROUP BY d.department_name
 ORDER BY headcount DESC;
 ```
 
-You should get 8 rows, one per department, with headcounts summing to 48.
+You should get 9 rows, one per department, with headcounts summing to 52.
+`Research` shows a headcount of 0 — it's a brand-new department with nobody
+in it yet, which is exactly why this query uses a `LEFT JOIN`.
 If this runs and returns sensible numbers, your environment is ready —
 move on to [Lab 01](../lab01-select-where/).
 

@@ -114,7 +114,7 @@ plans depending on indexes, statistics, and even bind variable values.
    SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY());
    ```
    Expect the optimizer to start from `CUSTOMERS` (filtered to
-   `country = 'Japan'`, roughly 1/6 of 500 rows — a smaller, more
+   `country = 'Japan'`, 100 of 500 rows — a smaller, more
    selective starting point) and then join out to `ORDERS`, rather than
    starting from the larger, unfiltered `ORDERS` table. This is the
    optimizer choosing join order based on selectivity — the same decision

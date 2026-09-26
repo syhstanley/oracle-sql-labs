@@ -91,8 +91,9 @@ Always match literal types to column types explicitly.
 CREATE INDEX idx_orders_status ON orders(status);
 ```
 *Why it can backfire:* `status` only has 4 distinct values across 10,000
-rows (~2,500 rows per value) — the optimizer will likely ignore this
-index and full-scan anyway, because reading 25% of the table via
+rows, and ~88% of them are `COMPLETED` — for `WHERE status = 'COMPLETED'`
+the optimizer will likely ignore this index and full-scan anyway, because
+reading most of the table via
 index-then-table-lookup (many scattered single-row fetches) is *more*
 expensive than one sequential full scan. Meanwhile every index you create
 still has to be maintained (slower `INSERT`/`UPDATE`/`DELETE`) whether or

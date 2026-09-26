@@ -179,7 +179,7 @@ WHERE c.customer_id = o.customer_id(+)
 
 -- 5. Row count of a CROSS JOIN = product of row counts
 SELECT COUNT(*) FROM departments CROSS JOIN products;
--- Expect 8 * 100 = 800.
+-- Expect 9 * 104 = 936.
 ```
 
 ## Debug / Optimize Challenge
